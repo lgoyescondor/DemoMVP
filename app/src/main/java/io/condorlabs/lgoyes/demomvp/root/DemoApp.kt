@@ -1,6 +1,7 @@
 package io.condorlabs.lgoyes.demomvp.root
 
 import android.app.Application
+import io.condorlabs.lgoyes.demomvp.login.LoginModule
 
 class DemoApp : Application() {
     private lateinit var component : ApplicationComponent
@@ -11,6 +12,7 @@ class DemoApp : Application() {
 
         component = DaggerApplicationComponent.builder()
                 .applicationModule( ApplicationModule(this) )
+                .loginModule( LoginModule() )
                 .build()
     }
 
