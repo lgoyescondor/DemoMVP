@@ -15,10 +15,18 @@ interface LoginContract {
 
     interface Presenter {
         fun setView( view : LoginContract.View )
+        /* When we have buttons inside our view we instruct
+           the presenter to handle the clic events for out buttons
+        */
 
+        fun loginButtonClicked()
+
+        fun getCurrentUser()
     }
 
     interface Interactor {
+        fun createUser( firstName: String, lastName: String )
 
+        fun getUser() : User?
     }
 }
