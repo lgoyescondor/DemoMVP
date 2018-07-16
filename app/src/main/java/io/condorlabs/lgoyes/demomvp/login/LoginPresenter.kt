@@ -14,14 +14,7 @@ class LoginPresenter : LoginContract.Presenter {
     }
 
     override fun loginButtonClicked() {
-        view?.run {
-            if( (getFirstName().trim() == "") || (getLastName().trim() == "") ){
-                showInputError()
-            }else{
-                interactor.createUser( getFirstName(), getLastName() )
-                showUserSaveMessage()
-            }
-        }
+        saveUser()
     }
 
     override fun getCurrentUser() {
@@ -29,10 +22,21 @@ class LoginPresenter : LoginContract.Presenter {
 
         view?.run {
             if ( user == null ){
-                //showUserNotAvailable()
+                showUserNotAvailable()
             }else{
                 setFirstName( user.firstName )
                 setLastName( user.lastName )
+            }
+        }
+    }
+
+    fun   saveUser(){
+        view?.run {
+            if( (getFirstName().trim() == "") || (getLastName().trim() == "") ){
+                showInputError()
+            }else{
+                interactor.createUser( getFirstName(), getLastName() )
+                showUserSaveMessage()
             }
         }
     }
