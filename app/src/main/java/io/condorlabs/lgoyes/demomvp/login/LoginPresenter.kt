@@ -29,7 +29,7 @@ class LoginPresenter : LoginContract.Presenter {
 
         view?.run {
             if ( user == null ){
-                showUserNotAvailable()
+                //showUserNotAvailable()
             }else{
                 setFirstName( user.firstName )
                 setLastName( user.lastName )
